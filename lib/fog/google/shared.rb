@@ -23,6 +23,7 @@ module Fog
       # @option options [String] :google_client_email A @developer.gserviceaccount.com email address to use
       # @option options [String] :google_key_location The location of a pkcs12 key file
       # @option options [String] :google_key_string The content of the pkcs12 key file
+      # @option options [String] :google_auth Manually created Google::Auth instance to use
       # @option options [String] :google_json_key_location The location of a JSON key file
       # @option options [String] :google_json_key_string The content of the JSON key file
       # @option options [String] :google_api_scope_url The access scope URLs
