@@ -14,7 +14,8 @@ module Fog
           @host = options[:host] || "storage.googleapis.com"
 
           @client = initialize_google_client(options)
-          @storage_json = @client.discovered_api("storage", api_version)
+
+          @storage_json = ::Google::Apis::StorageV1::StorageService.new
         end
 
         def signature(params)
