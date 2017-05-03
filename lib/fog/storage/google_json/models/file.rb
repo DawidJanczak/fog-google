@@ -127,7 +127,7 @@ module Fog
           options["metadata"] = metadata
 
           data = service.put_object(directory.key, key, body, options)
-          merge_attributes(data.headers.reject { |key, _value| %w(contentLength contentType).include?(key) })
+          merge_attributes(data.to_h.reject { |key, _value| %w(contentLength contentType).include?(key) })
           self.content_length = Fog::Storage.get_body_size(body)
           self.content_type ||= Fog::Storage.get_content_type(body)
           true
