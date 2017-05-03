@@ -36,14 +36,6 @@ module Fog
             mime_type = Fog::Storage.parse_data(data)[:headers]["Content-Type"]
           end
 
-          # media = ::Google::APIClient::UploadIO.new(data, mime_type, object_name)
-          # api_method = @storage_json.objects.insert
-          # parameters = {
-            # "uploadType" => "multipart",
-            # "bucket" => bucket_name,
-            # "name" => object_name
-          # }
-
           body_object = {
             :contentType => mime_type,
             :contentEncoding => options["contentEncoding"]
@@ -71,7 +63,6 @@ module Fog
                                       name: object_name,
                                       predefined_acl: options['predefinedAcl'],
                                       upload_source: data.path)
-          # request(api_method, parameters, body_object = body_object, media = media)
         end
       end
 
