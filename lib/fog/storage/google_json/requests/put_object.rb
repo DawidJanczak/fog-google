@@ -31,6 +31,8 @@ module Fog
             :name => object_name
           )
           request_options = ::Google::Apis::RequestOptions.default.merge(options)
+          puts data: data
+          puts data_class: data.class
           @storage_json.insert_object(bucket_name, object_config,
                                       :upload_source => data.path,
                                       :predefined_acl => options["predefinedAcl"],
