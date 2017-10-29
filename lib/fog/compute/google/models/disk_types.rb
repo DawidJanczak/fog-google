@@ -6,14 +6,11 @@ module Fog
 
         def all(filters = {})
           if filters["zone"]
-            data = service.list_disk_types(filters["zone"]).body["items"] || []
+            data = service.list_disk_types(filters["zone"]).items || []
           else
-            data = []
-            service.list_aggregated_disk_types.body["items"].each_value do |zone|
-              data.concat(zone["diskTypes"]) if zone["diskTypes"]
-            end
+            data = service.list_aggregated_disk_types.items.values.flat_map(&:disk_types)
           end
-          load(data)
+          load(data.map(&:to_h))
         end
 
         def get(identity, zone = nil)

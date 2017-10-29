@@ -30,13 +30,7 @@ module Fog
 
       class Real
         def list_disk_types(zone)
-          api_method = @compute.disk_types.list
-          parameters = {
-            "project" => @project,
-            "zone"    => zone.split("/")[-1]
-          }
-
-          request(api_method, parameters)
+          @compute.list_disk_types(@project, zone.split("/")[-1])
         end
       end
     end
